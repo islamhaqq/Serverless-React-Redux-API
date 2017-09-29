@@ -1,0 +1,11 @@
+{
+  "name": "Serverless-React-Redux-API",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/SyedAman/Serverless-React-Redux-API.git",
+  "author": "Syed Aman <sna274@nyu.edu>",
+  "license": "MIT",
+  "devDependencies": {
+    "aws-sdk": "^2.124.0"
+  }
+}
