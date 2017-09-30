@@ -27,9 +27,9 @@ module.exports = {
         // use babel for transpilation
         loader: "babel-loader",
         // check the root directory (all files)
-        include: "__dirname",
+        include: __dirname,
         // ignore node_modules since these are just dependencies
-        exclude: "/node_modules/"
+        exclude: /node_modules/
       }
     ]
   }
