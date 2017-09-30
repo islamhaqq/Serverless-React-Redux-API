@@ -19,7 +19,7 @@ import requestDynamoDB from './lib/dynamodb'
  * with it.
  * @return {void}
  */
-export function main(event, context, callback) {
+export async function main(event, context, callback) {
   /**
    * The parsed request body representing HTTP request parameters.
    * @type {Object}
