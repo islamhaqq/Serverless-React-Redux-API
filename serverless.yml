@@ -61,8 +61,19 @@ provider:
 #    - exclude-me-dir/**
 
 functions:
-  hello:
-    handler: handler.hello
+  # The HTTP API endpoint which calls main() in the create API to create notes
+  create:
+    handler: create.main
+    events:
+      - http:
+        # url path is /notes
+        path: notes
+        # POST request
+        method: post
+        # allow CORS
+        cors: true
+        # authenticate using the AWS IAM role
+        authorizer: aws_iam
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
