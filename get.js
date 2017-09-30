@@ -17,7 +17,7 @@ export async function main(event, context, callback) {
 
   try {
     // retrieve a note from the notes table in DynamoDB
-    const result = requestDynamoDB('get', params)
+    const result = await requestDynamoDB('get', params)
 
     if (result.Item) {
       callback(null, buildResponse(200, result.Item))
