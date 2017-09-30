@@ -86,7 +86,7 @@ export function main(event, context, callback) {
      */
     const headers = {
       'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Credentials': '*'
+      'Access-Control-Allow-Credentials': 'true'
     }
 
     // handle failed table update
