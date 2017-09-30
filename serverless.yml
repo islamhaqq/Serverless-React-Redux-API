@@ -89,6 +89,21 @@ functions:
         # authenticate using the AWS IAM role
         authorizer: aws_iam
 
+  # The HTTP API endpoint which calls main() in the get API to retrieve a
+  # list of notes
+  list:
+    handler: list.main
+    events:
+      - http:
+        # url path is /notes with a parameter detailing the noteId
+        path: notes
+        # POST request
+        method: query
+        # allow CORS
+        cors: true
+        # authenticate using the AWS IAM role
+        authorizer: aws_iam
+
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
