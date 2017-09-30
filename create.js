@@ -12,7 +12,7 @@ import requestDynamoDB from './lib/dynamodb'
  * Lambda function for creating notes and adding them to the DynamoDB database.
  * @method main
  * @param  {Object} event - All the information about the event that
- * triggered this Lambda f unction. The request to create a note.
+ * triggered this Lambda function. The request to create a note.
  * @param  {Object} context - The runtime the Lambda function is executing in.
  * @param  {Function} callback - The function called after Lambda function is
  * executed with the results or errors. AWS will respond to the HTTP request
