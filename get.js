@@ -20,7 +20,7 @@ export async function main(event, context, callback) {
     const result = requestDynamoDB('get', params)
 
     if (result.Item) {
-      callback(null, buildResponse(200, result.Item)
+      callback(null, buildResponse(200, result.Item))
     } else {
       callback(null, buildResponse(500, { status: false, error: "note not found!" }))
     }
