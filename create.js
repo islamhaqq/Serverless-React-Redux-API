@@ -4,17 +4,9 @@
  */
 
 import uuid from 'uuid'
-import AWS from 'aws-sdk'
 
 import buildResponse from './lib/responses'
-
-// set region to US East Ohio when connecting to DynamoDB
-AWS.config.update({ region: 'us-east-2' })
-/**
- * An object that interfaces with the DynamoDB service.
- * @type {AWS}
- */
-const dynamoDB = new AWS.DynamoDB.DocumentClient()
+import requestDynamoDB from './lib/dynamodb'
 
 /**
  * Lambda function for creating notes and adding them to the DynamoDB database.
@@ -80,17 +72,19 @@ export function main(event, context, callback) {
     }
   }
 
-  // update the DynamoDB notes table with a new note
-  dynamoDB.put(params, (error, data) => {
-    // handle failed table update
-    if (error) {
-      // send the HTTP request that AWS will respond to
-      callback(null, buildResponse(500, { status:false }))
-      return
-    }
+  // attempt to create a note
+  try {
+    // update the DynamoDB notes table with a new note
+    requestDynamoDB('put', params)
 
     // handle successful update and addition of new note to table
+
     // send the HTTP request that AWS will respond to
     callback(null, buildResponse(200, params.Item))
-  })
+  } catch (error) {
+    // handle failed table update
+
+    // send the HTTP request that AWS will respond to
+    callback(null, buildResponse(500, { status:false }))
+  }
 }
