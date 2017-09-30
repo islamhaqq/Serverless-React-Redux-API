@@ -6,6 +6,8 @@
 import uuid from 'uuid'
 import AWS from 'aws-sdk'
 
+import buildResponse from './lib/responses'
+
 // set region to US East Ohio when connecting to DynamoDB
 AWS.config.update({ region: 'us-east-2' })
 /**
@@ -78,67 +80,17 @@ export function main(event, context, callback) {
     }
   }
 
-  // update the DynamoDB notes table with new note
+  // update the DynamoDB notes table with a new note
   dynamoDB.put(params, (error, data) => {
-    /**
-     * Define headers that will enable CORS.
-     * @type {Object}
-     */
-    const headers = {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Credentials': 'true'
-    }
-
     // handle failed table update
     if (error) {
-      const response = {
-        /**
-         * The standardized HTTP status code indiciating success or error.
-         * @type {Number}
-         */
-        statusCode: 500,
-        /**
-         * CORS access headers.
-         * @type {Object}
-         */
-        headers: headers,
-        /**
-         * Body of the response containing the created note.
-         * @type {String}
-         */
-        body: JSON.stringify({ status: false })
-      }
-
       // send the HTTP request that AWS will respond to
-      callback(null, response)
+      callback(null, buildResponse(500, { status:false }))
       return
     }
 
     // handle successful update and addition of new note to table
-
-    /**
-     * Response object in response to PUT request to update notes table.
-     * @type {Object}
-     */
-    const response = {
-      /**
-       * The standardized HTTP status code indiciating success or error.
-       * @type {Number}
-       */
-      statusCode: 200,
-      /**
-       * CORS access headers.
-       * @type {Object}
-       */
-      headers: headers,
-      /**
-       * Body of the response containing the created note.
-       * @type {String}
-       */
-      body: JSON.stringify(params.Item)
-    }
-
     // send the HTTP request that AWS will respond to
-    callback(null, response)
+    callback(null, buildResponse(200, params.Item))
   })
 }
