@@ -27,7 +27,7 @@ const dynamoDB = new AWS.DynamoDB.DocumentClient()
  */
 export function main(event, context, callback) {
   /**
-   * The request body.
+   * The parsed request body representing HTTP request parameters.
    * @type {Object}
    */
   const data = JSON.parse(event.body)
@@ -81,7 +81,7 @@ export function main(event, context, callback) {
   // update the DynamoDB notes table with new note
   dynamoDB.put(params, (error, data) => {
     /**
-     * Define headers that will allow CORS.
+     * Define headers that will enable CORS.
      * @type {Object}
      */
     const headers = {
