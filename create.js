@@ -108,6 +108,10 @@ export function main(event, context, callback) {
          */
         body: JSON.stringify({ status: false })
       }
+
+      // send the HTTP request that AWS will respond to
+      callback(null, response)
+      return
     }
 
     // handle successful update and addition of new note to table
@@ -134,7 +138,7 @@ export function main(event, context, callback) {
       body: JSON.stringify(params.Item)
     }
 
-    // call the callback and send the response
+    // send the HTTP request that AWS will respond to
     callback(null, response)
   })
 }
