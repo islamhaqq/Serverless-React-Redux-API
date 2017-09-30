@@ -83,6 +83,7 @@ export function main(event, context, callback) {
     callback(null, buildResponse(200, params.Item))
   } catch (error) {
     // handle failed table update
+    console.log(error)
 
     // send the HTTP request that AWS will respond to
     callback(null, buildResponse(500, { status:false }))
