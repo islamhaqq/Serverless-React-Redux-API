@@ -66,28 +66,28 @@ functions:
     handler: create.main
     events:
       - http:
-        # url path is /notes
-        path: notes
-        # POST request
-        method: post
-        # allow CORS
-        cors: true
-        # authenticate using the AWS IAM role
-        authorizer: aws_iam
+          # url path is /notes
+          path: notes
+          # POST request
+          method: post
+          # allow CORS
+          cors: true
+          # authenticate using the AWS IAM role
+          authorizer: aws_iam
 
   # The HTTP API endpoint which calls main() in the get API to retrieve notes
   get:
     handler: get.main
     events:
       - http:
-        # url path is /notes with a parameter detailing the noteId
-        path: notes/{id}
-        # POST request
-        method: get
-        # allow CORS
-        cors: true
-        # authenticate using the AWS IAM role
-        authorizer: aws_iam
+          # url path is /notes with a parameter detailing the noteId
+          path: notes/{id}
+          # POST request
+          method: get
+          # allow CORS
+          cors: true
+          # authenticate using the AWS IAM role
+          authorizer: aws_iam
 
   # The HTTP API endpoint which calls main() in the get API to retrieve a
   # list of notes
@@ -95,42 +95,42 @@ functions:
     handler: list.main
     events:
       - http:
-        # url path is /notes
-        path: notes
-        # POST request
-        method: query
-        # allow CORS
-        cors: true
-        # authenticate using the AWS IAM role
-        authorizer: aws_iam
+          # url path is /notes
+          path: notes
+          # POST request
+          method: query
+          # allow CORS
+          cors: true
+          # authenticate using the AWS IAM role
+          authorizer: aws_iam
 
   # The HTTP API endpoint which calls main() in the update API to update notes
   update:
     handler: update.main
     events:
       - http:
-        # url path is /notes with a parameter detailing the noteId
-        path: notes/{id}
-        # POST request
-        method: put
-        # allow CORS
-        cors: true
-        # authenticate using the AWS IAM role
-        authorizer: aws_iam
+          # url path is /notes with a parameter detailing the noteId
+          path: notes/{id}
+          # POST request
+          method: put
+          # allow CORS
+          cors: true
+          # authenticate using the AWS IAM role
+          authorizer: aws_iam
 
   # The HTTP API endpoint which calls main() in the delete API to delete notes
   delete:
     handler: delete.main
     events:
       - http:
-        # url path is /notes with a parameter detailing the noteId
-        path: notes/{id}
-        # POST request
-        method: delete
-        # allow CORS
-        cors: true
-        # authenticate using the AWS IAM role
-        authorizer: aws_iam
+          # url path is /notes with a parameter detailing the noteId
+          path: notes/{id}
+          # POST request
+          method: delete
+          # allow CORS
+          cors: true
+          # authenticate using the AWS IAM role
+          authorizer: aws_iam
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
