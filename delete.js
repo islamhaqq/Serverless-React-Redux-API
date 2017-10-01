@@ -2,8 +2,6 @@
  * The API using the AWS SDK for deleting notes on the DynamoDB notes database.
  */
 
-import uuid from 'uuid'
-
 import buildResponse from './lib/responses'
 import requestDynamoDB from './lib/dynamodb'
 
@@ -19,12 +17,6 @@ import requestDynamoDB from './lib/dynamodb'
  * @return {void}
  */
 export async function main(event, context, callback) {
-  /**
-   * The parsed request body representing HTTP request parameters.
-   * @type {Object}
-   */
-  const data = JSON.parse(event.body)
-
   /**
    * The options used to delete to the DynamoDB database, specifying table name,
    * what what item, the primary id, etc.
@@ -70,6 +62,6 @@ export async function main(event, context, callback) {
     console.log(error)
 
     // send the HTTP request that AWS will respond to
-    callback(null, buildResponse(500, { status:false }))
+    callback(null, buildResponse(500, { status: false }))
   }
 }
