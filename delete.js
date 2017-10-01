@@ -59,7 +59,7 @@ export async function main(event, context, callback) {
   // attempt to delete a note
   try {
     // delete a note in the DynamoDB notes table
-    requestDynamoDB('delete', params)
+    await requestDynamoDB('delete', params)
 
     // handle successful delete of a note in the table
 
