@@ -98,7 +98,7 @@ functions:
           # url path is /notes
           path: notes
           # POST request
-          method: query
+          method: get
           # allow CORS
           cors: true
           # authenticate using the AWS IAM role
