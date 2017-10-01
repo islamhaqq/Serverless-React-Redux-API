@@ -81,7 +81,7 @@ export async function main(event, context, callback) {
   // attempt to update a note
   try {
     // update the DynamoDB notes table with changes to a note
-    requestDynamoDB('update', params)
+    await requestDynamoDB('update', params)
 
     // handle successful update of a note on the table
 
