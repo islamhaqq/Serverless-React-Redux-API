@@ -95,10 +95,24 @@ functions:
     handler: list.main
     events:
       - http:
-        # url path is /notes with a parameter detailing the noteId
+        # url path is /notes
         path: notes
         # POST request
         method: query
+        # allow CORS
+        cors: true
+        # authenticate using the AWS IAM role
+        authorizer: aws_iam
+
+  # The HTTP API endpoint which calls main() in the update API to update notes
+  update:
+    handler: update.main
+    events:
+      - http:
+        # url path is /notes with a parameter detailing the noteId
+        path: notes/{id}
+        # POST request
+        method: put
         # allow CORS
         cors: true
         # authenticate using the AWS IAM role
